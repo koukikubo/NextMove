@@ -1,0 +1,77 @@
+<div class="container">
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        <a class="link-secondary" href="#">？？？</a>
+      </div>
+      <div class="col-4 text-center">
+        <a class="blog-header-logo text-dark" href="#">NEXTMOVE</a>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <a class="link-secondary" href="#" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+        </a>
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to current_user.nickname, "#", class: "btn btn-sm btn-outline-secondary" %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+          <% else %>
+            <%= link_to '新規登録', new_user_registration_path, class:"btn btn-sm btn-outline-secondary" %>
+            <%= link_to 'ログイン', new_user_session_path, class:"btn btn-sm btn-outline-secondary " %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-secondary" href="#">World</a>
+      <a class="p-2 link-secondary" href="#">U.S.</a>
+      <a class="p-2 link-secondary" href="#">Technology</a>
+      <a class="p-2 link-secondary" href="#">Design</a>
+      <a class="p-2 link-secondary" href="#">Culture</a>
+    </nav>
+  </div>
+</div>
+
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 fst-italic">人生の転機となるNEXTMOVE!!</h1>
+      <p class="lead my-3">様々なサイトから貴方のための情報をあなたの為に...</p>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+    </div>
+  </div>
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        ここから求人情報を探そう
+      </h3>
+      
+
+    </div>
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="fst-italic">新着情報</h4>
+          <p class="mb-0">複数の転職サイトの新着情報を表示します</p>
+        </div>
+        <div class="p-4">
+          <h4 class="fst-italic">管理人のSNSです</h4>
+          <ol class="list-unstyled">
+            <li><%= link_to 'GitHub', 'https://github.com/koukikubo', class:'SNS'%></li>
+            <li><%= link_to 'Twitter', 'https://twitter.com/ko_o0016', class:'SNS'%></li>
+            <li><%= link_to 'Instagram', 'https://www.instagram.com/_93_k_oi', class:'SNS'%></li> 
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="blog-footer">
+  <p>
+    <a href="#">Back to top</a>
+  </p>
+</footer>

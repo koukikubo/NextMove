@@ -1,0 +1,8 @@
+class CreateSiteTypes < ActiveRecord::Migration[6.0]
+  def change
+    create_table :site_types do |t|
+      t.string :name, null: false
+      t.timestamps
+    end
+  end
+end

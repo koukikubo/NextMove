@@ -1,0 +1,2 @@
+module NextmoveHelper
+end
