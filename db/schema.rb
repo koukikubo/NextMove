@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_19_072659) do
+ActiveRecord::Schema.define(version: 2023_05_24_093501) do
+
+  create_table "job_sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url", null: false
+    t.string "company_name", null: false
+    t.bigint "site_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["site_type_id"], name: "index_job_sites_on_site_type_id"
+  end
+
+  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url", null: false
+    t.string "company_name", null: false
+    t.text "description", null: false
+    t.datetime "job_opened_at", null: false
+    t.string "title", null: false
+    t.bigint "job_site_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_site_id"], name: "index_jobs_on_job_site_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "searches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "preference_id", null: false
+    t.string "city_name", null: false
+    t.text "keyword", null: false
+    t.integer "min_salary", null: false
+    t.integer "max_salary", null: false
+    t.integer "employment_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "site_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,4 +70,7 @@ ActiveRecord::Schema.define(version: 2023_04_19_072659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_sites", "site_types"
+  add_foreign_key "jobs", "job_sites"
+  add_foreign_key "jobs", "users"
 end

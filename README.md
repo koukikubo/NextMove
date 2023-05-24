@@ -39,7 +39,6 @@ Things you may want to cover:
 has_many : searches
 has_many :jobs, through: :searches
 ## searchesテーブル
-
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | user                 | references | null: false, foreign_key:true  |
@@ -53,9 +52,8 @@ has_many :jobs, through: :searches
 ### Association
 has_many : jobs, dependent: :destroy
 belongs_to : user
-belongs_to : job_site
-## jobsテーブル
 
+## jobsテーブル
 | Column               | Type       | Options                       |
 | -------------------- | ---------- | -------------------------     |
 | url                  | string     | null: false                   |
@@ -63,13 +61,12 @@ belongs_to : job_site
 | description          | text       | null: false                   |  
 | published_at         | integer    | null: false                   |           
 | title                | string     | null: false                   |
-| job_site             | references | null: false, foreign_key: true|
+| search               | references | null: false, foreign_key: true|
 | user                 | references | null: false, foreign_key: true|
 ### Association
-belongs_to : job_site
+belongs_to : user
 belongs_to : search
 ## job_sitesテーブル
-
 | Column               | Type       | Options                       |
 | -------------------- | ---------- | -------------------------     |
 | url                  | string     | null: false                   |
@@ -78,3 +75,9 @@ belongs_to : search
 ### Association
 has_many : searches
 has_many : jobs, through: :searches
+belongs_to : site_type
+## site_typesテーブル
+| Column               | Type       | Options                       |
+| -------------------- | ---------- | -------------------------     |
+| name                 | string     | null: false                   |
+
